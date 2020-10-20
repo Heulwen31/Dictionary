@@ -1,11 +1,6 @@
-package sample;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Dictionary {
-    public final Scanner scanner = new Scanner(System.in);
-
-    public List<Word> database = new ArrayList<>();
+    public Map<String, String> database = new HashMap<String, String>();
 }

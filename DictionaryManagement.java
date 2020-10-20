@@ -1,21 +1,28 @@
-package sample;
+import java.util.Scanner;
 
+<<<<<<< HEAD
 import java.io.*;
 
 public class DictionaryManagement extends Dictionary {
     private static final String DATA_FILE_PATH = "E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
+=======
+public class DictionaryManagement {
+    public Dictionary dictionary = new Dictionary();
+>>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
 
     public void insertFromCommandline() {
+        Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
+        Scanner sc = new Scanner(System.in);
         for (int i = 0; i < n; i++) {
-            String English = scanner.next();
-            String Vietnamese = scanner.next();
-            Word a = new Word(English, Vietnamese);
-            database.add(a);
+            String English = sc.nextLine();
+            String Vietnamese = sc.nextLine();
+            dictionary.database.put(English, Vietnamese);
         }
         scanner.close();
     }
+<<<<<<< HEAD
 
     public void insertFromFile() {
         BufferedReader reader;
@@ -96,3 +103,6 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 }
+=======
+}
+>>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
