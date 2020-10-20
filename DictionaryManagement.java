@@ -1,41 +1,29 @@
-import java.util.Scanner;
+package sample;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import java.io.*;
 
 public class DictionaryManagement extends Dictionary {
+
     private static final String DATA_FILE_PATH = "E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
-=======
-public class DictionaryManagement {
-    public Dictionary dictionary = new Dictionary();
->>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
-=======
-public class DictionaryManagement {
-    public Dictionary dictionary = new Dictionary();
->>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
 
     public void insertFromCommandline() {
-        Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        Scanner sc = new Scanner(System.in);
         for (int i = 0; i < n; i++) {
-            String English = sc.nextLine();
-            String Vietnamese = sc.nextLine();
-            dictionary.database.put(English, Vietnamese);
+            String English = scanner.next();
+            String Vietnamese = scanner.next();
+            Word a = new Word(English, Vietnamese);
+            database.add(a);
         }
         scanner.close();
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     public void insertFromFile() {
         BufferedReader reader;
         try {
             reader =
                     new BufferedReader(
-                            new FileReader("C:\\Users\\admin\\Downloads\\Dictionary\\Dictionary\\src\\E_V.txt"));
+                            new FileReader("C:\\Users\\namtr\\IdeaProjects\\Dictionary\\src\\E_V.txt"));
             String line = reader.readLine();
             while (line != null) {
                 String[] temp = line.split(SPLITTING_CHARACTERS);
@@ -109,9 +97,3 @@ public class DictionaryManagement {
         }
     }
 }
-=======
-}
->>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
-=======
-}
->>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
