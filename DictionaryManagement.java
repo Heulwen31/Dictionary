@@ -1,11 +1,16 @@
 import java.util.Scanner;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.io.*;
 
 public class DictionaryManagement extends Dictionary {
     private static final String DATA_FILE_PATH = "E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
+=======
+public class DictionaryManagement {
+    public Dictionary dictionary = new Dictionary();
+>>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
 =======
 public class DictionaryManagement {
     public Dictionary dictionary = new Dictionary();
@@ -22,6 +27,7 @@ public class DictionaryManagement {
         }
         scanner.close();
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     public void insertFromFile() {
@@ -103,6 +109,9 @@ public class DictionaryManagement {
         }
     }
 }
+=======
+}
+>>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
 =======
 }
 >>>>>>> parent of f74c1ee... đồ họa chưa hoàn thiện
