@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -10,11 +11,11 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="773.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <items>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="244.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="633.0" prefWidth="307.0">
             <children>
-                <MenuBar layoutX="-1.0" layoutY="2.0" prefHeight="25.0" prefWidth="221.0">
+                <MenuBar layoutX="-1.0" layoutY="2.0" prefHeight="25.0" prefWidth="271.0">
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
@@ -33,21 +34,21 @@
                         </Menu>
                     </menus>
                 </MenuBar>
-                <TextField id="barsearch" fx:id="text_search" layoutY="33.0" prefHeight="25.0" prefWidth="221.0" />
-                <Button id="search" fx:id="search" layoutX="193.0" layoutY="33.0" mnemonicParsing="false" onAction="#Submit" prefHeight="25.0" prefWidth="28.0" text="S" />
-                <ListView id="listWords" fx:id="listWord" layoutX="-1.0" layoutY="68.0" prefHeight="500.0" prefWidth="221.0" />
+                <TextField id="barsearch" fx:id="text_search" layoutY="33.0" prefHeight="31.0" prefWidth="271.0" />
+                <Button id="search" fx:id="search" layoutX="234.0" layoutY="33.0" mnemonicParsing="false" onAction="#Submit" prefHeight="31.0" prefWidth="37.0" text="S" />
+                <ListView id="listWords" fx:id="listWord" layoutY="69.0" prefHeight="702.0" prefWidth="271.0" />
             </children>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="503.0" prefWidth="458.0">
             <children>
-                <Pane id="defined" prefHeight="58.0" prefWidth="525.0">
+                <Pane id="defined" layoutY="-2.0" prefHeight="65.0" prefWidth="642.0">
                     <children>
-                        <Text layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Definition" wrappingWidth="55.13671875" />
-                        <Button id="buttonUS" layoutX="429.0" layoutY="18.0" mnemonicParsing="false" onAction="#TalkUS" prefHeight="25.0" prefWidth="37.0" text="US" />
-                        <Button id="buttonUK" layoutX="474.0" layoutY="18.0" mnemonicParsing="false" onAction="#TalkUK" prefHeight="25.0" prefWidth="37.0" text="UK" />
+                        <Text layoutX="40.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Definition" wrappingWidth="55.13671875" />
+                        <Button id="buttonUS" layoutX="531.0" layoutY="24.0" mnemonicParsing="false" onAction="#TalkUS" prefHeight="25.0" prefWidth="37.0" text="US" />
+                        <Button id="buttonUK" layoutX="591.0" layoutY="24.0" mnemonicParsing="false" onAction="#TalkUK" prefHeight="25.0" prefWidth="37.0" text="UK" />
                     </children>
                 </Pane>
-            <WebView fx:id="showMean" layoutY="68.0" prefHeight="500.0" prefWidth="525.0" />
+            <WebView fx:id="showMean" layoutY="68.0" prefHeight="702.0" prefWidth="642.0" />
             </children>
         </AnchorPane>
     </items>
