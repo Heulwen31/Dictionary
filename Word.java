@@ -24,4 +24,11 @@ public class Word {
     public void setWord_explain(String word_explain) {
         this.word_explain = word_explain;
     }
+
+    public boolean contain(String word) {
+        if (this.word_target.length() < word.length()) {
+            return false;
+        }
+        return word.equals(this.word_target.substring(0, word.length()));
+    }
 }
