@@ -6,7 +6,6 @@ public class DictionaryManagement extends Dictionary {
 
     private static final String DATA_FILE_PATH = "C:\\Users\\namtr\\IdeaProjects\\Dictionary\\src\\E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
-
     public void insertFromFile() {
         BufferedReader reader;
         try {
@@ -35,33 +34,60 @@ public class DictionaryManagement extends Dictionary {
         return null;
     }
 
+    public void deleteWord(String word) throws IOException {
+        File inFile = new File(DATA_FILE_PATH);
+        if (!inFile.isFile()) {
+            return;
+        }
+        File tempFile = new File(inFile.getAbsoluteFile() + ".tmp");
+        BufferedReader br = new BufferedReader(new FileReader(DATA_FILE_PATH));
+        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
 
-//    public void dictionaryExportToFile() {
-//        BufferedWriter bw = null;
-//        FileWriter fw = null;
-//        try {
-//            String enLine = "\n";
-//            String data = scanner.nextLine();
-//
-//            File file = new File(DATA_FILE_PATH);
-//
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//
-//            fw = new FileWriter(file.getAbsoluteFile(), true);
-//            bw = new BufferedWriter(fw);
-//            bw.write(enLine);
-//            bw.write(data);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                if (bw != null) bw.close();
-//                if (fw != null) fw.close();
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
-//    }
+        String line;
+
+        while ((line = br.readLine()) != null) {
+            String[] temp = line.split(SPLITTING_CHARACTERS);
+            if (!temp[0].equals(word)) {
+                pw.println(line);
+                pw.flush();
+            }
+        }
+        pw.close();
+        br.close();
+
+        if (!inFile.delete()) {
+            System.out.println("Could not delete file");
+            return;
+        }
+        if (!tempFile.renameTo(inFile)) {
+            System.out.println("Could not delete file");
+        }
+    }
+
+    public void dictionaryExportToFile(String word, String mean, String typeWord, String spelling) {
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        String word_add = word + "<html><i>"
+                + spelling + "</i><br/><ul><li><b><i> "
+                + typeWord + "</i></b><ul><li><font color='#cc0000'><b> "
+                + mean + "</b></font></li></ul></li></ul></html>\n";
+        try {
+            File file = new File(DATA_FILE_PATH);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            fw = new FileWriter(file.getAbsoluteFile(), true);
+            bw = new BufferedWriter(fw);
+            bw.write(word_add);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null) bw.close();
+                if (fw != null) fw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }
