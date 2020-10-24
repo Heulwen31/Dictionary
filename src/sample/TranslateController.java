@@ -10,10 +10,11 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class TranslateController {
     @FXML
@@ -21,11 +22,8 @@ public class TranslateController {
     @FXML
     TextArea textShow;
 
-    private final String CLIENT_ID = "FREE_TRIAL_ACCOUNT";
-    private final String CLIENT_SECRET = "PUBLIC_SECRET";
-    private final String ENDPOINT = "http://api.whatsmate.net/v1/translation/translate";
     private final String fromLang = "en";
-    private final String toLang = "ja";
+    private final String toLang = "vi";
 
     public void goBack(ActionEvent e) throws Exception {
         Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
@@ -33,53 +31,34 @@ public class TranslateController {
         loader.setLocation(getClass().getResource("sample.fxml"));
         Parent sampleParent = loader.load();
         Scene scene = new Scene(sampleParent);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setScene(scene);
     }
 
-    public void translate(String fromLang, String toLang, String text) throws Exception {
-        // TODO: Should have used a 3rd party library to make a JSON string from an object
-        String jsonPayload = new StringBuilder()
-                .append("{")
-                .append("\"fromLang\":\"")
-                .append(fromLang)
-                .append("\",")
-                .append("\"toLang\":\"")
-                .append(toLang)
-                .append("\",")
-                .append("\"text\":\"")
-                .append(text)
-                .append("\"")
-                .append("}")
-                .toString();
-
-        URL url = new URL(ENDPOINT);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setDoOutput(true);
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("X-WM-CLIENT-ID", CLIENT_ID);
-        conn.setRequestProperty("X-WM-CLIENT-SECRET", CLIENT_SECRET);
-        conn.setRequestProperty("Content-Type", "application/json");
-
-        OutputStream os = conn.getOutputStream();
-        os.write(jsonPayload.getBytes());
-        os.flush();
-        os.close();
-
-        int statusCode = conn.getResponseCode();
-        //System.out.println("Status Code: " + statusCode);
-        BufferedReader br = new BufferedReader(new InputStreamReader(
-                (statusCode == 200) ? conn.getInputStream() : conn.getErrorStream()
-        ));
-        String output;
-        while ((output = br.readLine()) != null) {
-            System.out.println(output);
-            textShow.setText(output);
+    public String translate(String langFrom, String langTo, String text) throws IOException {
+        // INSERT YOUR URL HERE
+        String urlStr = "https://script.google.com/macros/s/AKfycbxh9AJ0VmB37q-ELDPAE4hz88VXO2z3eSyGYfjwQPetZO2IFP1z/exec" +
+                "?q=" + URLEncoder.encode(text, "UTF-8") +
+                "&target=" + langTo +
+                "&source=" + langFrom;
+        URL url = new URL(urlStr);
+        StringBuilder response = new StringBuilder();
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
         }
-        conn.disconnect();
+        in.close();
+        return response.toString();
     }
 
     public void translateSubmit(ActionEvent e) throws Exception {
         String text = textSearch.getText();
-        translate(fromLang, toLang, text);
+        String[] temp = text.split("\n");
+        for (String s : temp) {
+            textShow.appendText(translate(fromLang, toLang, s) + "\n");
+        }
     }
 }

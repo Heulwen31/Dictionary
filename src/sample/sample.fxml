@@ -18,34 +18,30 @@
     <items>
         <AnchorPane layoutX="-175.0" minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="628.0">
             <children>
-                <Pane id="defined" layoutX="227.0" layoutY="14.0" prefHeight="70.0" prefWidth="574.0">
+                <Pane id="defined" layoutX="227.0" layoutY="0.0" prefHeight="127.0" prefWidth="589.0">
                <children>
-                  <Text layoutX="58.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Definition" />
+                  <Text fill="WHEAT" layoutX="51.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Definition" wrappingWidth="113.0">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Text>
+                  <ImageView fitHeight="37.0" fitWidth="52.0" layoutX="14.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/menu.png" />
+                     </image>
+                  </ImageView>
                </children></Pane>
-                  <Button id="buttonUK" layoutX="764.0" layoutY="85.0" mnemonicParsing="false" onAction="#TalkUK" prefHeight="25.0" prefWidth="37.0" text="UK" />
-                  <Button id="buttonUS" layoutX="683.0" layoutY="85.0" mnemonicParsing="false" onAction="#TalkUS" prefHeight="25.0" prefWidth="37.0" text="US" />
-            <ImageView fitHeight="95.0" fitWidth="37.0" layoutX="646.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/speakers.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="21.0" fitWidth="49.0" layoutX="726.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/speakers.png" />
-               </image>
-            </ImageView>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="227.0">
                   <children>
-                      <TextField id="barsearch" fx:id="text_search" layoutX="0.0" layoutY="127.0" prefHeight="32.0" prefWidth="239.0">
+                      <TextField id="barsearch" fx:id="text_search" layoutX="0.0" layoutY="127.0" onAction="#Submit" onKeyPressed="#submitListView" onKeyReleased="#submitListView" prefHeight="32.0" prefWidth="238.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                      <effect>
                         <DropShadow />
                      </effect></TextField>
-                      <ListView id="listWords" fx:id="listWord" layoutX="0.0" layoutY="160.0" prefHeight="538.0" prefWidth="239.0">
+                      <ListView id="listWords" fx:id="listWord" layoutX="0.0" layoutY="160.0" onMousePressed="#submitResult" prefHeight="538.0" prefWidth="239.0">
                      <effect>
-                        <Lighting>
+                        <Lighting specularExponent="0.0">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -54,25 +50,83 @@
                            </light>
                         </Lighting>
                      </effect></ListView>
-                  <Pane id="pane" layoutX="0.0" layoutY="14.0" prefHeight="70.0" prefWidth="239.0">
+                  <Pane id="pane" layoutY="0.0" prefHeight="127.0" prefWidth="239.0">
                      <children>
-                        <Button layoutX="50.0" layoutY="30.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="37.0" />
-                        <Button layoutX="120.0" layoutY="30.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="37.0" />
-                        <Button layoutX="190.0" layoutY="30.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="31.0" prefWidth="37.0" text="T" />
-                            <Button id="search" fx:id="search" layoutY="30.0" mnemonicParsing="false" onAction="#Submit" prefHeight="30.0" prefWidth="28.0">
+                        <Button id="add" layoutX="7.0" layoutY="58.0" mnemonicParsing="false" onAction="#addWord" prefHeight="43.0" prefWidth="41.0">
                            <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="55.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/search.png" />
+                                    <Image url="@../images/add.png" />
                                  </image>
                               </ImageView>
-                           </graphic>
-                        </Button>
+                           </graphic></Button>
+                        <Button id="edit" layoutX="63.0" layoutY="58.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0">
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/edit-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button id="change" layoutX="176.0" layoutY="60.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="44.0" prefWidth="41.0">
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Google_Translate_Icon.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Text fill="WHEAT" layoutX="13.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced English Dictionary" textAlignment="CENTER" wrappingWidth="214.6708984375">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Button id="remove" layoutX="124.0" layoutY="58.0" mnemonicParsing="false" onAction="#delWord" prefHeight="43.0" prefWidth="47.0">
+                           <graphic>
+                              <ImageView fitHeight="59.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/delete.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </Pane>
+                      <Button fx:id="search" layoutX="204.0" layoutY="127.0" mnemonicParsing="false" onAction="#Submit" prefHeight="30.0" prefWidth="28.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   </children>
               </AnchorPane>
-            <WebView fx:id="showMean" layoutX="240.0" layoutY="127.0" prefHeight="574.0" prefWidth="574.0" />
+            <WebView fx:id="showMean" layoutX="240.0" layoutY="127.0" prefHeight="573.0" prefWidth="575.0" />
+            <Button id="buttonUS" layoutX="645.0" layoutY="128.0" mnemonicParsing="false" onAction="#TalkUS" prefHeight="51.0" prefWidth="81.0" text="US">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/speak.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button id="buttonUK" layoutX="726.0" layoutY="128.0" mnemonicParsing="false" onAction="#TalkUK" prefHeight="51.0" prefWidth="81.0" text="UK">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/speak.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </items>

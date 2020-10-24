@@ -20,7 +20,7 @@ public class Main extends Application {
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Advanced English Dictionary");
+            primaryStage.setTitle("Dictionary");
             primaryStage.getIcons().add(new Image("/images/icon.png"));
             primaryStage.show();
         } catch (Exception e) {
