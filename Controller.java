@@ -10,7 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -18,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class Controller implements Initializable {
     private static final String VOICENAME = "kevin16";
@@ -36,22 +39,17 @@ public class Controller implements Initializable {
     @FXML
     private ListView<String> listWord;
 
+
     /**
      * function submit
      *
      * @param event click Search button
      */
+
     @FXML
     void Submit(ActionEvent event) {
-
-        listWord.getItems().clear();
         String findWord = text_search.getText();
         Word keyWord = dictionaryManagement.dictionaryLookup(findWord);
-        for (Word e : dictionaryManagement.database) {
-            if (e.contain(findWord)) {
-                listWord.getItems().add(e.word_target);
-            }
-        }
         if (dictionaryManagement.database.contains(keyWord)) {
             showMean.getEngine().loadContent(keyWord.word_explain, "text/html");
         } else {
@@ -60,36 +58,9 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void submitResult(MouseEvent mouseEvent) {
-        Word keyWord = dictionaryManagement.dictionaryLookup(listWord.getSelectionModel().getSelectedItem());
-        if (dictionaryManagement.database.contains(keyWord)) {
-            showMean.getEngine().loadContent(keyWord.word_explain, "text/html");
-        } else {
-            showMean.getEngine().loadContent("Sorry i can solve the problem!!");
-        }
-    }
+    void submitResult(ActionEvent event) {
 
-    public void TalkUS(ActionEvent actionEvent) {
-        voice.allocate();
-        String word = text_search.getText();
-        try {
-            voice.speak(word);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
-
-    public void TalkUK(ActionEvent actionEvent) {
-        voice.allocate();
-        String word = text_search.getText();
-        voice.allocate();
-        try {
-            voice.speak(word);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
 
     @FXML
     void addWord(ActionEvent event) throws IOException {
@@ -122,17 +93,53 @@ public class Controller implements Initializable {
     @FXML
     void translate(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Translate.fxml"));
         Parent translateParent = loader.load();
         Scene scene = new Scene(translateParent);
+
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setScene(scene);
     }
 
+    @FXML
+    void TalkUS(ActionEvent event) {
+        String word = text_search.getText();
+        voice.allocate();
+        try {
+            voice.speak(word);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    void TalkUK(ActionEvent event) {
+        String word = text_search.getText();
+        voice.allocate();
+        try {
+            voice.speak(word);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        dictionaryManagement = new DictionaryManagement();
         dictionaryManagement.insertFromFile();
+
+    }
+
+    @FXML
+    void submitResult(MouseEvent mouseEvent) {
+        Word keyWord = dictionaryManagement.dictionaryLookup(listWord.getSelectionModel().getSelectedItem());
+        if (dictionaryManagement.database.contains(keyWord)) {
+            showMean.getEngine().loadContent(keyWord.word_explain, "text/html");
+        } else {
+            showMean.getEngine().loadContent("Sorry i can solve the problem!!");
+        }
     }
 
 }

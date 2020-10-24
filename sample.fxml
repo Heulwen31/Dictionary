@@ -11,41 +11,55 @@
 <SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" prefHeight="759.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/8"
            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="244.0">
-        <TextField id="barsearch" fx:id="text_search" layoutX="-1.0" layoutY="74.0" prefHeight="25.0"
-                   prefWidth="268.0"/>
-        <Button id="search" fx:id="search" layoutX="240.0" layoutY="74.0" mnemonicParsing="false"
-                onAction="#Submit" prefHeight="25.0" prefWidth="28.0" text="S"/>
-        <ListView id="listWords" fx:id="listWord" layoutX="-1.0" layoutY="101.0" onMousePressed="#submitResult"
-                  prefHeight="656.0" prefWidth="268.0"/>
-        <Pane prefHeight="68.0" prefWidth="268.0">
-            <Button fx:id="additionWord" layoutX="28.0" layoutY="42.0" mnemonicParsing="false"
-                    onAction="#addWord" text="Add"/>
-            <Button fx:id="deleteWord" layoutX="88.0" layoutY="42.0" mnemonicParsing="false"
-                    onAction="#delWord" text="Remove"/>
-            <Button fx:id="tp" layoutX="171.0" layoutY="42.0" mnemonicParsing="false" onAction="#translate"
-                    text="Translate"/>
-        </Pane>
-        <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="240.0" layoutY="74.0">
-            <Image url="@../../../../Desktop/image/search.jpg"/>
-        </ImageView>
-    </AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="503.0" prefWidth="458.0">
-        <Pane id="defined" prefHeight="68.0" prefWidth="637.0">
-            <Text layoutX="28.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Definition"
-                  wrappingWidth="79.13671875">
-                <font>
-                    <Font size="18.0"/>
-                </font>
-            </Text>
-            <ImageView fitHeight="34.0" fitWidth="28.0" layoutY="37.0">
-                <Image url="@../../../../Desktop/image/menu.png"/>
-            </ImageView>
-        </Pane>
-        <WebView fx:id="showMean" layoutY="68.0" prefHeight="689.0" prefWidth="637.0"/>
-        <Button id="buttonUS" layoutX="535.0" layoutY="85.0" mnemonicParsing="false" onAction="#TalkUS"
-                prefHeight="25.0" prefWidth="37.0" text="US"/>
-        <Button id="buttonUK" layoutX="579.0" layoutY="85.0" mnemonicParsing="false" onAction="#TalkUK"
-                prefHeight="25.0" prefWidth="37.0" text="UK"/>
-    </AnchorPane>
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="244.0">
+            <children>
+                <TextField id="barsearch" fx:id="text_search" layoutX="-1.0" layoutY="74.0" prefHeight="25.0"
+                           prefWidth="268.0"/>
+                <Button id="search" fx:id="search" layoutX="240.0" layoutY="74.0" mnemonicParsing="false"
+                        onAction="#Submit" prefHeight="25.0" prefWidth="28.0" text="S"/>
+                <ListView id="listWords" fx:id="listWord" layoutX="-1.0" layoutY="101.0" onMousePressed="#submitResult"
+                          prefHeight="656.0" prefWidth="268.0"/>
+                <Pane prefHeight="68.0" prefWidth="268.0">
+                    <children>
+                        <Button fx:id="additionWord" layoutX="28.0" layoutY="42.0" mnemonicParsing="false"
+                                onAction="#addWord" text="Add"/>
+                        <Button fx:id="deleteWord" layoutX="88.0" layoutY="42.0" mnemonicParsing="false"
+                                onAction="#delWord" text="Remove"/>
+                        <Button fx:id="tp" layoutX="171.0" layoutY="42.0" mnemonicParsing="false" onAction="#translate"
+                                text="Translate"/>
+                    </children>
+                </Pane>
+                <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="240.0" layoutY="74.0">
+                    <image>
+                        <Image url="@../../../../Desktop/image/search.jpg"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="503.0" prefWidth="458.0">
+            <children>
+                <Pane id="defined" prefHeight="68.0" prefWidth="637.0">
+                    <children>
+                        <Text layoutX="28.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Definition"
+                              wrappingWidth="79.13671875">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Text>
+                        <ImageView fitHeight="34.0" fitWidth="28.0" layoutY="37.0">
+                            <image>
+                                <Image url="@../../../../Desktop/image/menu.png"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <WebView fx:id="showMean" layoutY="68.0" prefHeight="689.0" prefWidth="637.0"/>
+                <Button id="buttonUS" layoutX="535.0" layoutY="85.0" mnemonicParsing="false" onAction="#TalkUS"
+                        prefHeight="25.0" prefWidth="37.0" text="US"/>
+                <Button id="buttonUK" layoutX="579.0" layoutY="85.0" mnemonicParsing="false" onAction="#TalkUK"
+                        prefHeight="25.0" prefWidth="37.0" text="UK"/>
+            </children>
+        </AnchorPane>
+    </items>
 </SplitPane>

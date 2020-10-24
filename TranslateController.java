@@ -17,6 +17,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class TranslateController {
+    private final String toLang = "vi";
     @FXML
     TextArea textSearch;
     @FXML
@@ -56,7 +57,6 @@ public class TranslateController {
         String[] temp = text.split("\n");
         for (String s : temp) {
             String fromLang = "en";
-            String toLang = "vi";
             textShow.appendText(translate(fromLang, toLang, s) + "\n");
         }
     }

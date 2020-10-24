@@ -4,7 +4,7 @@ import java.io.*;
 
 public class DictionaryManagement extends Dictionary {
 
-    private static final String DATA_FILE_PATH = "C:\\Users\\namtr\\IdeaProjects\\Dictionary\\src\\E_V.txt";
+    private static final String DATA_FILE_PATH = "C:\\Users\\admin\\IdeaProjects\\TuDien\\src\\E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
     public void insertFromFile() {
         BufferedReader reader;
