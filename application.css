@@ -1,6 +1,6 @@
 #buttonUS {
     -fx-font-size: 12px;
-    -fx-background-color: sandybrown;
+    -fx-background-color: white;
     -fx-padding: 5 5 5 5;
     -fx-font-weight: bold;
     -fx-text-fill: black;
@@ -8,19 +8,55 @@
 
 #buttonUK {
     -fx-font-size: 12px;
-    -fx-background-color: sandybrown;
+    -fx-background-color: white;
     -fx-padding: 5 5 5 5;
     -fx-font-weight: bold;
     -fx-text-fill: black;
 }
 
 #defined {
-    -fx-background-color: dodgerblue;
+    -fx-background-color: darkslateblue;
+}
+
+#pane {
+    -fx-background-color: midnightblue;
 }
 
 #search {
     -fx-font-size: 12px;
-    -fx-background-color: green;
+    -fx-background-color: white;
+    -fx-padding: 5 5 5 5;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+#add {
+    -fx-font-size: 12px;
+    -fx-background-color: midnightblue;
+    -fx-padding: 5 5 5 5;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+#edit {
+    -fx-font-size: 12px;
+    -fx-background-color: midnightblue;
+    -fx-padding: 5 5 5 5;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+#remove {
+    -fx-font-size: 12px;
+    -fx-background-color: midnightblue;
+    -fx-padding: 5 5 5 5;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+#change {
+    -fx-font-size: 12px;
+    -fx-background-color: midnightblue;
     -fx-padding: 5 5 5 5;
     -fx-font-weight: bold;
     -fx-text-fill: black;

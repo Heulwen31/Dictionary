@@ -4,7 +4,7 @@ import java.io.*;
 
 public class DictionaryManagement extends Dictionary {
 
-    private static final String DATA_FILE_PATH = "C:\\Users\\namtr\\IdeaProjects\\Dictionary\\src\\E_V.txt";
+    private static final String DATA_FILE_PATH = "C:\\Users\\admin\\IdeaProjects\\TuDien\\src\\E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
 
     public void insertFromFile() {
@@ -34,34 +34,4 @@ public class DictionaryManagement extends Dictionary {
         }
         return null;
     }
-
-
-//    public void dictionaryExportToFile() {
-//        BufferedWriter bw = null;
-//        FileWriter fw = null;
-//        try {
-//            String enLine = "\n";
-//            String data = scanner.nextLine();
-//
-//            File file = new File(DATA_FILE_PATH);
-//
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//
-//            fw = new FileWriter(file.getAbsoluteFile(), true);
-//            bw = new BufferedWriter(fw);
-//            bw.write(enLine);
-//            bw.write(data);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                if (bw != null) bw.close();
-//                if (fw != null) fw.close();
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
-//    }
 }

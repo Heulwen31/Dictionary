@@ -5,13 +5,22 @@ import com.sun.speech.freetts.VoiceManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class Controller implements Initializable {
     @FXML
@@ -28,28 +37,15 @@ public class Controller implements Initializable {
 
     private static final String VOICENAME = "kevin16";
 
-    private DictionaryManagement dictionaryManagement;
+    public DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
     public VoiceManager vm = VoiceManager.getInstance();
     public Voice voice = vm.getVoice(VOICENAME);
 
-    /**
-     * function submit
-     *
-     * @param event click Search button
-     * @throws Exception
-     */
     @FXML
     void Submit(ActionEvent event) throws Exception {
-
-        listWord.getItems().clear();
         String findWord = text_search.getText();
         Word keyWord = dictionaryManagement.dictionaryLookup(findWord);
-        for (Word e : dictionaryManagement.database) {
-            if (e.contain(findWord)) {
-                listWord.getItems().add(e.word_target);
-            }
-        }
         if (dictionaryManagement.database.contains(keyWord)) {
             showMean.getEngine().loadContent(keyWord.word_explain, "text/html");
         } else {
@@ -57,9 +53,38 @@ public class Controller implements Initializable {
         }
     }
 
+    @FXML
+    void submitResult(MouseEvent mouseEvent) throws Exception {
+        Word keyWord = dictionaryManagement.dictionaryLookup(listWord.getSelectionModel().getSelectedItem());
+        if (dictionaryManagement.database.contains(keyWord)) {
+            showMean.getEngine().loadContent(keyWord.word_explain, "text/html");
+        } else {
+            showMean.getEngine().loadContent("Sorry i can solve the problem!!");
+        }
+    }
+
+    @FXML
+    void submitListView(KeyEvent keyEvent) throws Exception {
+        listWord.getItems().clear();
+        String findWord = text_search.getText();
+        for (Word e : dictionaryManagement.database) {
+            if (e.contain(findWord)) {
+                listWord.getItems().add(e.word_target);
+            }
+        }
+        listWord.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        listWord.getSelectionModel().selectIndices(0);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        dictionaryManagement = new DictionaryManagement();
+        dictionaryManagement.insertFromFile();
+    }
+
     public void TalkUS(ActionEvent actionEvent) {
-        voice.allocate();
         String word = text_search.getText();
+        voice.allocate();
         try {
             voice.speak(word);
         } catch (Exception e) {
@@ -68,7 +93,6 @@ public class Controller implements Initializable {
     }
 
     public void TalkUK(ActionEvent actionEvent) {
-        voice.allocate();
         String word = text_search.getText();
         voice.allocate();
         try {
@@ -78,9 +102,12 @@ public class Controller implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        dictionaryManagement = new DictionaryManagement();
-        dictionaryManagement.insertFromFile();
+    public void changeScene(ActionEvent e) throws Exception {
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Translate.fxml"));
+        Parent translateParent = loader.load();
+        Scene scene = new Scene(translateParent);
+        stage.setScene(scene);
     }
 }
