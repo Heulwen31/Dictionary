@@ -69,3 +69,7 @@
     -fx-font-weight: bold;
     -fx-text-fill: black;
 }
+
+.buttonTalk {
+    -fx-background-color: white;
+}

@@ -6,16 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+public class AdditionWordController extends Controller {
 
-public class AdditionWord {
-
-    private final DictionaryManagement dictionaryManagement = new DictionaryManagement();
+    private DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
     @FXML
     private TextArea wordMean;
@@ -27,24 +24,19 @@ public class AdditionWord {
     private TextField wordAdd;
 
     @FXML
-    private Button backHome;
-
-    @FXML
     private TextField wordType;
-
-    @FXML
-    private Button save;
 
     @FXML
     void saveWord(ActionEvent event) {
         if (wordAdd != null && wordMean != null && wordSpelling != null && wordType != null) {
-            dictionaryManagement.dictionaryExportToFile(wordAdd.getText(), wordMean.getText(), wordType.getText(), wordSpelling.getText());
+            super.dictionaryManagement.dictionaryExportToFile(wordAdd.getText(), wordMean.getText(), wordType.getText(), wordSpelling.getText());
+            super.dictionaryManagement.insertFromFile();
         }
     }
 
     @FXML
-    void backToHome(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void goBack(ActionEvent e) throws Exception {
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("sample.fxml"));
         Parent sampleParent = loader.load();
