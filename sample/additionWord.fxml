@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AdditionWordController">
+    <children>
+        <TextArea fx:id="wordMean" layoutX="267.0" layoutY="156.0" prefHeight="297.0" prefWidth="488.0" />
+        <Label layoutX="462.0" layoutY="90.0" prefHeight="50.0" prefWidth="83.0" text="Mean" textFill="#400505">
+            <font>
+                <Font size="27.0" />
+            </font>
+        </Label>
+        <Label layoutX="103.0" layoutY="105.0" prefHeight="17.0" prefWidth="57.0" text="Word" textFill="#1b0202">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Label>
+        <TextField fx:id="wordAdd" layoutX="57.0" layoutY="156.0" prefHeight="44.0" prefWidth="149.0" />
+        <Label layoutX="82.0" layoutY="222.0" prefHeight="34.0" prefWidth="100.0" text="Type Word" textFill="#5b0808">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="96.0" layoutY="348.0" prefHeight="28.0" prefWidth="71.0" text="Spelling" textFill="#430707">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="wordType" layoutX="57.0" layoutY="280.0" prefHeight="44.0" prefWidth="149.0" />
+        <TextField fx:id="wordSpelling" layoutX="57.0" layoutY="404.0" prefHeight="44.0" prefWidth="149.0" />
+        <Button layoutX="720.0" layoutY="57.0" mnemonicParsing="false" onAction="#saveWord" prefHeight="31.0" prefWidth="71.0" style="-fx-background-color: lightgreen;" text="Add Word" textFill="#1a0846" />
+        <Label layoutX="25.0" layoutY="612.0" prefHeight="50.0" prefWidth="497.0" text="Note : fill in the information completely or the word not save !!" textFill="#f8f3f3">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+        <Button layoutX="734.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="57.0" style="-fx-background-color: lightgreen;" text="Back" textFill="#540f61" />
+        <Button layoutX="699.0" layoutY="99.0" mnemonicParsing="false" onAction="#changeWord" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: lightgreen;" text="Change Word" textFill="#210643" />
+    </children>
+</AnchorPane>

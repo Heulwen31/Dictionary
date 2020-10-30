@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="700.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.TranslateController">
+    <children>
+        <TextArea fx:id="textSearch" layoutY="-2.0" prefHeight="309.0" prefWidth="816.0"/>
+        <TextArea fx:id="textShow" layoutY="311.0" prefHeight="309.0" prefWidth="816.0"/>
+        <Button layoutX="660.0" layoutY="636.0" mnemonicParsing="false" onAction="#translateSubmit" prefHeight="31.0"
+                prefWidth="97.0" text="Translate"/>
+        <Button layoutX="758.0" layoutY="636.0" mnemonicParsing="false" onAction="#goBack" text="Back"/>
+        <Button layoutX="750.0" layoutY="259.0" mnemonicParsing="false" onAction="#clearSearch" styleClass="buttonTalk"
+                stylesheets="@application.css">
+            <graphic>
+                <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/clear.jpg"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button layoutX="745.0" layoutY="568.0" mnemonicParsing="false" onAction="#clearShow" prefHeight="45.0"
+                prefWidth="62.0" styleClass="buttonTalk" stylesheets="@application.css">
+            <graphic>
+                <ImageView fitHeight="39.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/clear.jpg"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button layoutX="699.0" layoutY="262.0" mnemonicParsing="false" onAction="#talkSearch" prefHeight="39.0"
+                prefWidth="51.0" styleClass="buttonTalk" stylesheets="@application.css">
+            <graphic>
+                <ImageView fitHeight="29.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/speak.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button layoutX="699.0" layoutY="572.0" mnemonicParsing="false" onAction="#talkShow" prefHeight="39.0"
+                prefWidth="51.0" styleClass="buttonTalk" stylesheets="@application.css">
+            <graphic>
+                <ImageView fitHeight="53.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/speak.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Label fx:id="label" layoutX="590.0" layoutY="6.0" prefHeight="31.0" prefWidth="62.0"/>
+        <ComboBox fx:id="comboBoxSearch" layoutX="660.0" layoutY="6.0" prefWidth="150.0" promptText="Language"/>
+        <ComboBox fx:id="comboBoxShow" layoutX="660.0" layoutY="311.0" prefWidth="150.0" promptText="Language"/>
+    </children>
+</AnchorPane>
